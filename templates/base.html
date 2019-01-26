@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/style.css" />
+
+    <title>{% block title %}{% endblock title %}</title>
+
+    {% endblock head %}
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="{{ url_for('index') }}">Demo</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li
+            class="nav-item {% if url_for(request.endpoint) == url_for('form') %}active{% endif %}"
+          >
+            <a class="nav-link" href="{{ url_for('form') }}"> Form </a>
+          </li>
+
+          <li
+          class="nav-item {% if url_for(request.endpoint) == url_for('submissions') %}active{% endif %}"
+        >
+          <a class="nav-link" href="{{ url_for('submissions') }}"> Submissions </a>
+        </li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      {% block content %} {% endblock content %}
+    </div>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js" integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP" crossorigin="anonymous"></script>
+    {% block scripts %} 
+    {% endblock scripts %}
+  </body>
+</html>
